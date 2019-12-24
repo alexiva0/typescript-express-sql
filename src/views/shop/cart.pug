@@ -1,0 +1,18 @@
+extends ../layouts/main-layout.pug
+block content
+    main
+        if products && products.length
+            ul
+                each product in products
+                    li
+                        p #{product.title} (#{product.CartItem.quantity})
+                        form(action='/cart-delete-item', method='POST')
+                            input(type='hidden', name='productId', value=product.id)
+                            button.btn(type="submit") Delete
+            h2 Total Price: #{products.totalPrice}
+            hr
+            .centered
+                form(action='/create-order', method='POST')
+                    button.btn(type='submit') ORDER NOW!
+        else
+            h1 No products in cart

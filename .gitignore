@@ -1,0 +1,5 @@
+# File contain environment variables with secret data like db name and password
+.env
+node_modules
+dist
+.vscode
